@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body%}
+<form method="POST">
+	{% csrf_token %}
+	<h4>Are U sure???</h4>
+	<button type="submit">ok</button>
+</form>
+{% endblock %}

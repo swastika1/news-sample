@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block categories %} active {% endblock %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+ {% endblock %}
+{% block body %}
+
+<section class="details-card">
+    <div class="container">
+      <h3>{{categorydetail.title}}</h3>
+        <div class="row">
+          {% for news in categorydetail.news.all|slice:'2' %}
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{news.image.url}}" class="img-fluid" width="150px" >
+                        
+                    </div>
+                    <div class="card-desc">
+                       
+                        
+                            <a href="{% url 'newsportalapp:newsdetail' news.id %}" class="btn-card">{{ news.title|title }}</a>   
+
+                    </div>
+
+               </div>
+               <a href="{% url 'newsportalapp:newsupdate' news.id %}">Update</a> 
+               <a href="{% url 'newsportalapp:newsdelete' news.id %}">Delete</a>   
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+</section>
+<!-- details card section starts from here -->
+
+
+{% endblock %}

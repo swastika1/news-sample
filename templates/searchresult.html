@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+{% if slist %}
+<ul>
+    {% for news in slist %}
+    <li><a href="{% url 'newsportalapp:newsdetail' news.id %}">{{news.title}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Nothing matched your search criteria.</p>
+ {% endif %}
+
+{% endblock %}
